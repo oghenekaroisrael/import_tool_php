@@ -101,10 +101,7 @@ include_once '../inc/db.php';
                         document.getElementById('import_row').style.display = 'none';
                         document.getElementById('importing_row').style.display = 'block';
                         document.getElementById('total_rows').innerHTML = resp['total'];
-                        document.getElementById('total_uploadable').innerHTML = resp.upload_c;
                         uploadables = resp.upload;
-                        document.getElementById('total_issues').innerHTML = resp.issues_c;
-                        issues = resp.issues;
                         var parentUL = document.getElementById('row_elements');
                         uploadables.forEach(function(item, index) {
                             var node = document.createElement('li');
@@ -115,36 +112,6 @@ include_once '../inc/db.php';
                             node.innerHTML = item['paycode'] + " " + item['amount'];
                             parentUL.appendChild(node);
                         });
-
-                        issues.forEach(function(item, index) {
-                            var node2 = document.createElement('li');
-                            node2.classList.add('list-group-item');
-                            node2.classList.add('list-group-item-danger');
-                            node2.classList.add('p-3');
-                            // add name if neccessary
-                            node2.innerHTML = item['paycode'] + " " + item['amount'];
-                            parentUL.appendChild(node2);
-                        });
-                    }
-                });
-            });
-
-            a('#upload').on('click', function(e) {
-                var jsonUploadables = JSON.stringify(uploadables);
-                a.ajax({
-                    type: 'POST',
-                    data: {
-                        uploadables: jsonUploadables
-                    },
-                    cache: false,
-                    url: 'imp.php',
-                    success: function(response) {
-                        if (parseInt(response) > 0) {
-
-                        } else {
-                            window.location = "imp.php?uploaded=yes";
-
-                        }
                     }
                 });
             });
@@ -154,7 +121,6 @@ include_once '../inc/db.php';
                 document.getElementById('import_row').style.display = 'block';
                 document.getElementById('importing_row').style.display = 'none';
                 uploadables = NULL;
-                issues = NULL;
             });
         });
     </script>
