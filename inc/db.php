@@ -18,7 +18,7 @@ class Database
 
 
 		try {
-			$this->db = new PDO("mysql:host=$servername;dbname=alcop_db;", $username, $password);
+			$this->db = new PDO("mysql:host=$servername;dbname=bualcoop_db;", $username, $password);
 			// set the PDO error mode to exception
 			$this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 			//echo "Connected successfully";
@@ -171,8 +171,8 @@ class Database
 		try {
 			$role = 2;
 			$res = null;
-			$stmt = $this->db->prepare("INSERT INTO users(payrollID,first_name,middle_name,surname,email,role_id,`password`, department,enrollment_year,phone_number,image) 
-										VALUES (?,?,?,?,?,?,?,?,?,?,null)");
+			$stmt = $this->db->prepare("INSERT INTO users(payrollID,first_name,middle_name,surname,email,role_id,`password`, department,enrollment_year,phone_number,image,activated) 
+										VALUES (?,?,?,?,?,?,?,?,?,?,null,1)");
 			$stmt->execute([$paycode, $first, $middle, $last, $email, $role, $hash, $department, $enrollment_year, $pnumber]);
 			$id = $this->db->lastInsertId();
 			$stmt = null;
