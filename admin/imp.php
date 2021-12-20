@@ -58,7 +58,6 @@ if (isset($_FILES['csv'])) {
         $email = $staff['email'];
         $hash = bin2hex(openssl_random_pseudo_bytes(4));
 
-
         $newUser = Database::getInstance()->insert_user($first, $middle, $last, $email, $role, $hash, $department, $enrollment_year, $pnumber);
         if ($newUser != 'Done') {
             $count++;

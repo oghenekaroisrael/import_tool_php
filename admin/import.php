@@ -39,23 +39,7 @@ include_once '../inc/db.php';
                                             Total Rows <h4 id="total_rows"></h4>
                                         </div>
                                         <div class="col-md-4 col-sm-12 text-center">
-                                            Total Uploadables <h4 id="total_uploadable"></h4>
-                                        </div>
-                                        <div class="col-md-4 col-sm-12 text-center">
-                                            Total Paycodes with Issues <h4 id="total_issues"></h4>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-6 col-sm-12">
-                                            <button class="btn btn-primary" id="upload">Upload Data</button>
-                                        </div>
-                                        <div class="col-md-6 col-sm-12">
-                                            <button class="btn btn-secondary pull-right" id="cancel">Cancel Upload</button>
-                                        </div>
-                                    </div>
-                                    <div class="row mt-5">
-                                        <div class="col-md-12 col-sm-12">
-                                            <ul class="list-group" id="row_elements" style="list-style-type: none;height: 400px;overflow-y: scroll;"></ul>
+                                            Total Uploaded <h4 id="total_uploadable"></h4>
                                         </div>
                                     </div>
                                 </div>
@@ -97,30 +81,10 @@ include_once '../inc/db.php';
                     processData: false,
                     url: 'imp.php',
                     success: function(response) {
-                        const resp = JSON.parse(response);
-                        document.getElementById('import_row').style.display = 'none';
-                        document.getElementById('importing_row').style.display = 'block';
-                        document.getElementById('total_rows').innerHTML = resp['total'];
-                        uploadables = resp.upload;
-                        var parentUL = document.getElementById('row_elements');
-                        uploadables.forEach(function(item, index) {
-                            var node = document.createElement('li');
-                            node.classList.add('list-group-item');
-                            node.classList.add('list-group-item-success');
-                            node.classList.add('p-3');
-                            // add name if neccessary
-                            node.innerHTML = item['paycode'] + " " + item['amount'];
-                            parentUL.appendChild(node);
-                        });
+                        document.getElementById('total_uploadable').style.display = 'none';
+                        document.getElementById('total_uploadable').innerHTML = response;
                     }
                 });
-            });
-
-            a('#cancel').on('click', function(e) {
-                e.preventDefault();
-                document.getElementById('import_row').style.display = 'block';
-                document.getElementById('importing_row').style.display = 'none';
-                uploadables = NULL;
             });
         });
     </script>
