@@ -9,9 +9,12 @@ class Database
 	// private constructor
 	private function __construct()
 	{
+		// $servername = "localhost";
+		// $username = "root";
+		// $password = "";
 		$servername = "localhost";
-		$username = "root";
-		$password = "";
+		$username = "bualcoop_dba";
+		$password = ".oj8AxrThus;";
 
 
 		try {
