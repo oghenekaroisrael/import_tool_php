@@ -45,7 +45,7 @@ if (isset($_FILES['csv'])) {
             }
         }
     }
-    $ok = json_encode(array("upload_c" => count($uploadable), "upload" => $uploadable, "issues_c" => count($issues_paycodes), "issues" => $issues_paycodes, "total" => $row));
+    $ok = json_encode(array("upload" => $uploadable));
     $all = json_decode($ok, true);
     $count = count($all);
     $issues = 0;
