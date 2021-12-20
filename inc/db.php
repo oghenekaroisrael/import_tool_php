@@ -13,12 +13,12 @@ class Database
 		// $username = "root";
 		// $password = "";
 		$servername = "localhost";
-		$username = "bualcoop_dba";
-		$password = ".oj8AxrThus;";
+		$username = "WHATEVER_YOUR_USERNAME_IS";
+		$password = "WHATEVER_YOUR_PASSWORD_IS";
 
 
 		try {
-			$this->db = new PDO("mysql:host=$servername;dbname=bualcoop_db;", $username, $password);
+			$this->db = new PDO("mysql:host=$servername;dbname=WHATEVER_YOUR_DB_NAME_IS;", $username, $password);
 			// set the PDO error mode to exception
 			$this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 			//echo "Connected successfully";
